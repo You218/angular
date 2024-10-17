@@ -1,0 +1,65 @@
+<div class="container">
+  <div class="form-container">
+    <h2>Registration Form</h2>
+    <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label>ID</label>
+        <input formControlName="id" type="number">
+        <div *ngIf="idValid" class="error">
+          This ID is already taken.
+        </div>
+
+      </div>
+
+      <div class="form-group">
+        <label>Name</label>
+        <input formControlName="name" type="text">
+      </div>
+
+      <div class="form-group">
+        <label>Email</label>
+        <input formControlName="email" type="email">
+      </div>
+
+      <div class="form-group">
+        <label>Address</label>
+        <input formControlName="address" type="text">
+      </div>
+
+      <button type="submit" class="submit-button" [disabled]="!registrationForm.valid">Register</button>
+    </form>
+  </div>
+
+  <div class="table-container">
+    <h2>Registered Data</h2>
+    <table class="data-table" *ngIf="registeredData.length > 0">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Address</th>
+          <th>Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let reg of registeredData">
+          <td>{{ reg.id }}</td>
+          <td>{{ reg.name }}</td>
+          <td>{{ reg.email }}</td>
+
+          <td>
+            {{ getNestedProperty(reg, 'address.street') }}
+            {{ getNestedProperty(reg, 'address.suite') }}
+            {{ getNestedProperty(reg, 'address.city') }}
+            {{ getNestedProperty(reg, 'address.zipcode') }}
+          </td>
+          <td><img [src]="deleteIcon" (click)="deleteReg(reg)" alt="iconByYou"></td>
+
+        </tr>
+      </tbody>
+
+    </table>
+    <p *ngIf="registeredData.length === 0">No registered data available.</p>
+  </div>
+</div>
