@@ -13,7 +13,7 @@ import { AuthGuard } from './auth.guard';
 import { AuthService } from './auth.service';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { HttpClientModule } from '@angular/common/http';
-import { InsightsComponent } from './insights/insights.component';
+import { SharedModule } from './shared.module';
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,13 +22,13 @@ import { InsightsComponent } from './insights/insights.component';
     ContactComponent,
     AboutComponent,
     PageNotFoundComponent,
-    InsightsComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    SharedModule
   ],
   providers: [ApiserviceService, AuthGuard, AuthService],
   bootstrap: [AppComponent]

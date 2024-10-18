@@ -8,10 +8,10 @@ import { AuthService } from './auth.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  navList = ["home","dashboard","contact","about","logout"];
+  navList = ["home","dashboard","contact","about","logout", "insights"];
 
   constructor(private router: Router, private auth : AuthService) {}
-  
+
   navigateTo(route: string) {
     if(route== "logout"){
       this.auth.loggedOut();

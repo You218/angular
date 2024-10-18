@@ -6,6 +6,7 @@ import { ContactComponent } from './contact/contact.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { AuthGuard } from './auth.guard';
+import { ParentComponent } from './insights/parent.component';
 
 const routes: Routes = [
   {path : '', redirectTo:'/home', pathMatch: 'full'},
@@ -13,6 +14,7 @@ const routes: Routes = [
   {path : 'about', component : AboutComponent},
   {path : "contact", component : ContactComponent},
   {path : "dashboard", component : DashboardComponent, canActivate: [AuthGuard]},
+  {path : "insights", component : ParentComponent},
   {path : "**", component : PageNotFoundComponent}
 ];
 
